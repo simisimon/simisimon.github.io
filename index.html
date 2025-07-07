@@ -1,1 +1,612 @@
-<h1>Hello World</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simon - Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header and Navigation */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 25px;
+            border: 2px solid white;
+            transition: all 0.3s;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .cta-button:hover {
+            background: white;
+            color: #667eea;
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+
+        /* About Section */
+        .about {
+            background: #f8f9fa;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .profile-img {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin: 0 auto;
+            display: block;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .skill-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-item i {
+            font-size: 3rem;
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-img {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .tech-tag {
+            background: #e9ecef;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-link {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .project-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Research & Papers */
+        .research {
+            background: #f8f9fa;
+        }
+
+        .paper-item {
+            background: white;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .paper-title {
+            font-size: 1.3rem;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .paper-authors {
+            color: #666;
+            margin-bottom: 0.5rem;
+            font-style: italic;
+        }
+
+        .paper-venue {
+            color: #667eea;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .paper-abstract {
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .paper-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .paper-link {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .paper-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Contact */
+        .contact {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .contact-content {
+            text-align: center;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-link {
+            color: white;
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+        }
+
+        .contact-link:hover {
+            transform: scale(1.2);
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .contact-links {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo">Sebastian Simon</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#research">Research</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <img src="" alt="Profile Picture" class="profile-img">
+                <div class="about-text">
+                    <p>Hey! I'm Sebastian Simon, a PhD student at Leipzig University with a strong interest in the configuration space of modern of software systems and AI-driven software engineering.</p>
+
+                    <p>A key part of my research focuses on analyzing the configuration space of modern software systems to uncover and model configuration dependencies. I also work with large language models (LLMs), retrieval-augmented generation (RAG), and agent-based systems to build intelligent tools that help detect and prevent misconfigurations.</p>
+
+                    <p>Outside of research and development, I enjoy staying active—bouldering, playing badminton, and going for runs are some of my favorite ways to unwind.</p>
+                </div>
+            </div>
+            
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <i class="fas fa-code"></i>
+                    <h3>Technology Stack</h3>
+                    <p>Proficient in a range of programming languages and technologies including Python, JavaScript, C#, Node.js, Vue.js, Spring, Maven, and Docker.</p>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-brain"></i>
+                    <h3>Artificial Intelligence</h3>
+                    <p>Hands-on experience with LLMs and advanced architectures such as RAG and agent-based systems.</p>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-search"></i>
+                    <h3>Research</h3>
+                    <p>Extensive experience in empirical research, academic publishing, and applying research insights to practical software engineering problems.</p>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-users"></i>
+                    <h3>Project Leadership</h3>
+                    <p>Skilled in supervising students and managing software projects from initial concept through to deployment and evaluation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-img">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">CfgNet</h3>
+                        <p>A framework for modeling the configuration landscape of software projects to detect and extract cross-stack configuration dependencies.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Poetry</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/AI-4-SE/CfgNet" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-img">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">TODO</h3>
+                        <p>TODO</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">TODO</span>
+                            <span class="tech-tag">TODO</span>
+                            <span class="tech-tag">TODO</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-img">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">TODO</h3>
+                        <p>TODO</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">TODO</span>
+                            <span class="tech-tag">TODO</span>
+                            <span class="tech-tag">TODO</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Research & Papers Section -->
+    <section id="research" class="research">
+        <div class="container">
+            <h2 class="section-title">Research & Publications</h2>
+            
+            <div class="paper-item">
+                <h3 class="paper-title">TODO</h3>
+                <p class="paper-authors">TODO</p>
+                <p class="paper-venue">TODO</p>
+                <p class="paper-abstract">TODO</p>
+                <div class="paper-links">
+                    <a href="#" class="paper-link"><i class="fas fa-file-pdf"></i> PDF</a>
+                    <a href="#" class="paper-link"><i class="fab fa-github"></i> Code</a>
+                </div>
+            </div>
+
+            <div class="paper-item">
+                <h3 class="paper-title">TODO</h3>
+                <p class="paper-authors">TODO</p>
+                <p class="paper-venue">TODO</p>
+                <p class="paper-abstract">TODO</p>
+                <div class="paper-links">
+                    <a href="#" class="paper-link"><i class="fab fa-github"></i> Code</a>
+                </div>
+            </div>
+
+            <div class="paper-item">
+                <h3 class="paper-title">Exploring Hyperparameter Usage and Tuning in Machine Learning Research</h3>
+                <p class="paper-authors">S. Simon, N. Kolyada, C. Akiki, M. Potthast, B. Stein, N.Siegmund</p>
+                <p class="paper-venue">IEEE/ACM 2nd International Conference on AI Engineering–Software Engineering for AI (CAIN)</p>
+                <p class="paper-abstract">This work explores hyperparameter usage and tuning in machine learning research.  Our results show that the most of the available hyperparameters remain untouched, and those that have been changed use constant values. Moreover, we found a significant difference between tuning hyperparameters and the reporting about it in the corresponding research papers. </p>
+                <div class="paper-links">
+                    <a href="https://sws.informatik.uni-leipzig.de/wp-content/uploads/2023/05/CAIN_2023_preprint.pdf" class="paper-link"><i class="fas fa-file-pdf"></i> PDF</a>
+                    <a href="https://github.com/AI-4-SE/Exploring-Hyperparameter-Usage-And-Tuning-In-Machine-Learning-Research" class="paper-link"><i class="fab fa-github"></i> Code</a>
+                </div>
+            </div>
+
+            <div class="paper-item">
+                <h3 class="paper-title">CfgNet: A Framework for Tracking Equality-Based Configuration Dependencies Across a Software Project</h3>
+                <p class="paper-authors">S. Simon, N. Ruckel, N. Siegmund</p>
+                <p class="paper-venue">IEEE Transactions on Software Engineering</p>
+                <p class="paper-abstract">We propose CFGNET, a framework that models the configuration landscape of a software project as a configuration network in an extensible and artifact-independent way. This way, we enable the early detection of possible dependency violations and proactively prevent misconfigurations during software development and maintenance.</p>
+                <div class="paper-links">
+                    <a href="https://sws.informatik.uni-leipzig.de/wp-content/uploads/2023/06/CfgNet_main_2023.pdf" class="paper-link"><i class="fas fa-file-pdf"></i> PDF</a>
+                    <a href="https://github.com/AI-4-SE/CfgNet" class="paper-link"><i class="fab fa-github"></i> Code</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="contact-content">                
+                <div class="contact-links">
+                    <a href="mailto:bastisimon95@googlemail.com" class="contact-link">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/sebastian-simon-8baa75191/" class="contact-link">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://github.com/simisimon" class="contact-link">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://x.com/SimiSimon17" class="contact-link">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://scholar.google.de/citations?user=hQDr960AAAAJ&hl=de" class="contact-link">
+                        <i class="fas fa-graduation-cap"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Simon. All rights reserved. Built with passion and dedication to excellence.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(102, 126, 234, 0.95)';
+            } else {
+                header.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections for animations
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
