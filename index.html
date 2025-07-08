@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simon - Portfolio</title>
+    <title>Sebastian Simon - Portfolio</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         * {
@@ -167,7 +167,196 @@
             margin-bottom: 1rem;
         }
 
+        /* Timeline CV */
+        .cv-timeline {
+            background: white;
+        }
+
+        .timeline-container {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        .timeline {
+            position: relative;
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            padding: 3rem 0;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: thin;
+            scrollbar-color: #667eea #f1f3f4;
+        }
+
+        .timeline::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .timeline::-webkit-scrollbar-track {
+            background: #f1f3f4;
+            border-radius: 4px;
+        }
+
+        .timeline::-webkit-scrollbar-thumb {
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            border-radius: 4px;
+        }
+
+        /* Simple horizontal line */
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 8rem;
+            left: 140px;
+            right: -500px;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            z-index: 1;
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            position: relative;
+            min-width: 280px;
+            max-width: 280px;
+            scroll-snap-align: start;
+            z-index: 2;
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+            position: relative;
+            transition: all 0.3s ease;
+            border-top: 3px solid transparent;
+            margin-top: 2rem;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            border-top-color: #667eea;
+        }
+
+        .timeline-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+
+        .timeline-year {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #667eea;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .timeline-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 0.4rem;
+            line-height: 1.3;
+            text-align: center;
+            min-height: 2.6rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .timeline-subtitle {
+            font-size: 0.9rem;
+            color: #667eea;
+            margin-bottom: 0.8rem;
+            font-weight: 500;
+            text-align: center;
+            min-height: 1.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .timeline-description {
+            font-size: 0.8rem;
+            color: #666;
+            line-height: 1.4;
+            margin-bottom: 0.8rem;
+            text-align: center;
+            min-height: 3.2rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .timeline-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.3rem;
+            justify-content: center;
+        }
+
+        .skill-tag {
+            background: #e9ecef;
+            color: #495057;
+            padding: 0.2rem 0.5rem;
+            border-radius: 10px;
+            font-size: 0.7rem;
+            font-weight: 500;
+        }
+
+        .timeline-navigation {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .nav-arrow {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .nav-arrow:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .nav-arrow:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            transform: none;
+        }
+
         /* Projects */
+        .projects {
+            background: #f8f9fa;
+        }
+
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -239,7 +428,7 @@
 
         /* Research & Papers */
         .research {
-            background: #f8f9fa;
+            background: white;
         }
 
         .paper-item {
@@ -358,6 +547,56 @@
                 flex-direction: column;
                 align-items: center;
             }
+
+            .timeline {
+                flex-direction: column;
+                align-items: center;
+                gap: 2rem;
+                overflow-x: visible;
+                padding: 2rem;
+            }
+
+            .timeline::before {
+                top: 0;
+                bottom: 0;
+                left: 1.5rem;
+                right: auto;
+                width: 3px;
+                height: auto;
+            }
+
+            .timeline::after {
+                bottom: 1rem;
+                left: 1.5rem;
+                right: auto;
+                top: auto;
+                border-left: 6px solid transparent;
+                border-right: 6px solid transparent;
+                border-top: 10px solid #764ba2;
+                border-bottom: none;
+                transform: translateX(-50%);
+            }
+
+            .timeline-item {
+                min-width: auto;
+                max-width: none;
+                width: 100%;
+                padding-left: 3rem;
+            }
+
+            .timeline-content {
+                margin-top: 0;
+                text-align: left;
+            }
+
+            .timeline-badge {
+                left: 1rem;
+                transform: none;
+            }
+
+            .timeline-navigation {
+                display: none;
+            }
         }
     </style>
 </head>
@@ -369,6 +608,7 @@
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
+                <li><a href="#cv">CV</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#research">Research</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -411,6 +651,125 @@
                     <i class="fas fa-users"></i>
                     <h3>Project Leadership</h3>
                     <p>Skilled in supervising students and managing software projects from initial concept through to deployment and evaluation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CV Timeline Section -->
+    <section id="cv" class="cv-timeline">
+        <div class="container">
+            <h2 class="section-title">Professional Journey</h2>
+            <div class="timeline-container">
+                <div class="timeline" id="timeline">
+
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-badge">Education/Work</div>
+                            <div class="timeline-year">2020 - Present</div>
+                            <div class="timeline-title">PhD Student/Research Assistant</div>
+                            <div class="timeline-subtitle">Leipzig University</div>
+                            <div class="timeline-description">
+                                Configuration space analysis and AI-driven software engineering research.
+                            </div>
+                            <div class="timeline-skills">
+                                <span class="skill-tag">Python</span>
+                                <span class="skill-tag">AI/ML</span>
+                                <span class="skill-tag">Research</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-badge">Education</div>
+                            <div class="timeline-year">2018 - 2022</div>
+                            <div class="timeline-title">M.Sc. Computer Systems in Engineering</div>
+                            <div class="timeline-subtitle">Leipzig University</div>
+                            <div class="timeline-description">
+                                Thesis on finding test gaps in software systems using changed-based analysis.
+                            </div>
+                            <div class="timeline-skills">
+                                <span class="skill-tag">Software Engineering</span>
+                                <span class="skill-tag">Python</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-badge">Work</div>
+                            <div class="timeline-year">Apr 2019 - Sep 2020</div>
+                            <div class="timeline-title">Student Assistant</div>
+                            <div class="timeline-subtitle">Selectline Software</div>
+                            <div class="timeline-description">
+                                Web application testing with Cypress.io and C# application development.
+                            </div>
+                            <div class="timeline-skills">
+                                <span class="skill-tag">Cypress</span>
+                                <span class="skill-tag">JavaScript</span>
+                                <span class="skill-tag">C#</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-badge">Work</div>
+                            <div class="timeline-year">Apr 2018 - Mar 2019</div>
+                            <div class="timeline-title">Student Assistant</div>
+                            <div class="timeline-subtitle">SensoTech GmbH</div>
+                            <div class="timeline-description">
+                                Web application testing and automation using Selenium.
+                            </div>
+                            <div class="timeline-skills">
+                                <span class="skill-tag">Selenium</span>
+                                <span class="skill-tag">C#</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-badge">Internship</div>
+                            <div class="timeline-year">Sep 2017 - Dec 2017</div>
+                            <div class="timeline-title">Intern</div>
+                            <div class="timeline-subtitle">Volkswagen AG</div>
+                            <div class="timeline-description">
+                                Web interface testing and test automation with HP UFT.
+                            </div>
+                            <div class="timeline-skills">
+                                <span class="skill-tag">HP UFT</span>
+                                <span class="skill-tag">Visual Basic</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-badge">Education</div>
+                            <div class="timeline-year">2014 - 2018</div>
+                            <div class="timeline-title">B.Sc. Computer Systems in Engineering</div>
+                            <div class="timeline-subtitle">Leipzig University</div>
+                            <div class="timeline-description">
+                                Thesis on automated cross-browser testing
+                            </div>
+                            <div class="timeline-skills">
+                                <span class="skill-tag">Java</span>
+                                <span class="skill-tag">Python</span>
+                                <span class="skill-tag">Algorithms</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-navigation">
+                    <button class="nav-arrow" id="prevBtn" onclick="scrollTimeline(-1)">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="nav-arrow" id="nextBtn" onclick="scrollTimeline(1)">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
                 </div>
             </div>
         </div>
@@ -607,6 +966,40 @@
             section.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
             observer.observe(section);
         });
+
+        // Timeline navigation functionality
+        function scrollTimeline(direction) {
+            const timeline = document.getElementById('timeline');
+            const scrollAmount = 300; // Adjust scroll distance
+            const currentScroll = timeline.scrollLeft;
+            const newScroll = currentScroll + (direction * scrollAmount);
+            
+            timeline.scrollTo({
+                left: newScroll,
+                behavior: 'smooth'
+            });
+            
+            // Update button states
+            setTimeout(updateNavigationButtons, 300);
+        }
+
+        function updateNavigationButtons() {
+            const timeline = document.getElementById('timeline');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            
+            if (timeline) {
+                const maxScroll = timeline.scrollWidth - timeline.clientWidth;
+                const currentScroll = timeline.scrollLeft;
+                
+                prevBtn.disabled = currentScroll <= 0;
+                nextBtn.disabled = currentScroll >= maxScroll;
+            }
+        }
+
+        // Initialize navigation buttons on load
+        window.addEventListener('load', updateNavigationButtons);
+        window.addEventListener('resize', updateNavigationButtons);
     </script>
 </body>
 </html>
