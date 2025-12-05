@@ -404,9 +404,131 @@
             100% { transform: scale(1) rotate(-2deg); }
         }
 
+        /* Ink Splatter Effects */
+        .ink-splatter {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.15;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .ink-splatter::before,
+        .ink-splatter::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+        }
+
+        /* Splatter 1 - Top Left */
+        .ink-splatter-1 {
+            width: 150px;
+            height: 150px;
+            background: #ff6b6b;
+            top: -50px;
+            left: -50px;
+            filter: blur(2px);
+        }
+
+        .ink-splatter-1::before {
+            width: 80px;
+            height: 80px;
+            background: #ff6b6b;
+            top: -20px;
+            left: 100px;
+        }
+
+        .ink-splatter-1::after {
+            width: 50px;
+            height: 50px;
+            background: #ff6b6b;
+            bottom: -10px;
+            right: 80px;
+        }
+
+        /* Splatter 2 - Top Right */
+        .ink-splatter-2 {
+            width: 120px;
+            height: 120px;
+            background: #4ecdc4;
+            top: 100px;
+            right: -30px;
+            filter: blur(2px);
+        }
+
+        .ink-splatter-2::before {
+            width: 60px;
+            height: 60px;
+            background: #4ecdc4;
+            top: 80px;
+            left: -20px;
+        }
+
+        .ink-splatter-2::after {
+            width: 40px;
+            height: 40px;
+            background: #4ecdc4;
+            bottom: 80px;
+            right: -15px;
+        }
+
+        /* Splatter 3 - Bottom Left */
+        .ink-splatter-3 {
+            width: 100px;
+            height: 100px;
+            background: #f9ca24;
+            bottom: 50px;
+            left: 100px;
+            filter: blur(2px);
+        }
+
+        .ink-splatter-3::before {
+            width: 70px;
+            height: 70px;
+            background: #f9ca24;
+            bottom: -30px;
+            left: -40px;
+        }
+
+        .ink-splatter-3::after {
+            width: 45px;
+            height: 45px;
+            background: #f9ca24;
+            top: -20px;
+            right: -25px;
+        }
+
+        /* Splatter 4 - Bottom Right */
+        .ink-splatter-4 {
+            width: 130px;
+            height: 130px;
+            background: #45b7d1;
+            bottom: -40px;
+            right: 80px;
+            filter: blur(2px);
+        }
+
+        .ink-splatter-4::before {
+            width: 75px;
+            height: 75px;
+            background: #45b7d1;
+            top: -25px;
+            right: 90px;
+        }
+
+        .ink-splatter-4::after {
+            width: 55px;
+            height: 55px;
+            background: #45b7d1;
+            bottom: 70px;
+            left: -30px;
+        }
+
         /* Sections */
         section {
             padding: 80px 0;
+            position: relative;
+            overflow: hidden;
         }
 
         .section-title {
@@ -480,6 +602,28 @@
         }
 
         /* Skills */
+        .powers-title {
+            text-align: center;
+            font-family: 'Bangers', cursive;
+            font-size: 2.5rem;
+            color: #2c3e50;
+            text-shadow: 3px 3px 0 #ff6b6b, 6px 6px 0 #f9ca24;
+            margin: 3rem 0 1rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            position: relative;
+            animation: powerGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes powerGlow {
+            0%, 100% {
+                text-shadow: 3px 3px 0 #ff6b6b, 6px 6px 0 #f9ca24;
+            }
+            50% {
+                text-shadow: 3px 3px 0 #4ecdc4, 6px 6px 0 #45b7d1;
+            }
+        }
+
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -496,11 +640,64 @@
             transition: all 0.3s;
             border: 3px solid #2c3e50;
             position: relative;
-            overflow: hidden;
+            overflow: visible;
+        }
+
+        .skill-item::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 120%;
+            height: 120%;
+            background:
+                conic-gradient(from 0deg,
+                    transparent 0deg 45deg,
+                    rgba(255, 107, 107, 0.1) 45deg 90deg,
+                    transparent 90deg 135deg,
+                    rgba(78, 205, 196, 0.1) 135deg 180deg,
+                    transparent 180deg 225deg,
+                    rgba(249, 202, 36, 0.1) 225deg 270deg,
+                    transparent 270deg 315deg,
+                    rgba(69, 183, 209, 0.1) 315deg 360deg
+                );
+            opacity: 0;
+            transition: all 0.3s;
+            z-index: 0;
+        }
+
+        .skill-item::after {
+            content: 'POW!';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            background:
+                radial-gradient(circle, #ff6b6b 0%, #ff6b6b 40%, #2c3e50 40%, #2c3e50 45%, #f9ca24 45%, #f9ca24 50%, transparent 50%);
+            color: white;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Bangers', cursive;
+            font-size: 0.8rem;
+            border: 3px solid #2c3e50;
+            border-radius: 50%;
+            transform: rotate(15deg) scale(0);
+            transition: all 0.3s;
+            box-shadow: 3px 3px 0 #2c3e50;
+            z-index: 10;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
         .skill-item:hover::before {
             opacity: 1;
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+
+        .skill-item:hover::after {
+            transform: rotate(25deg) scale(1);
         }
 
         @keyframes scan {
@@ -511,7 +708,7 @@
         .skill-item:hover {
             transform: translateY(-10px) rotate(2deg);
             box-shadow: 8px 8px 0 #2c3e50;
-            background: #f9ca24;
+            background: linear-gradient(135deg, #fff 0%, #f9ca24 100%);
         }
 
         .skill-item i {
@@ -519,6 +716,27 @@
             color: #ff6b6b;
             margin-bottom: 1rem;
             filter: drop-shadow(3px 3px 0 #2c3e50);
+            position: relative;
+            z-index: 2;
+            animation: powerPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes powerPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .skill-item h3 {
+            position: relative;
+            z-index: 2;
+            font-family: 'Bangers', cursive;
+            font-size: 1.3rem;
+            color: #2c3e50;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .skill-item p {
             position: relative;
             z-index: 2;
         }
@@ -747,17 +965,149 @@
 
         .project-card {
             background: white;
-            border-radius: 20px;
+            border-radius: 0;
             overflow: hidden;
-            box-shadow: 5px 5px 0 #2c3e50;
-            transition: all 0.3s;
-            border: 3px solid #2c3e50;
+            box-shadow:
+                inset 0 0 0 4px white,
+                inset 0 0 0 8px #2c3e50,
+                6px 6px 0 #2c3e50;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: none;
             position: relative;
+            min-width: 350px;
+            max-width: 350px;
+            scroll-snap-align: start;
+            flex-shrink: 0;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(44, 62, 80, 0.03) 2px,
+                rgba(44, 62, 80, 0.03) 4px
+            );
+            pointer-events: none;
+            z-index: 5;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .project-card::after {
+            content: '';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 40px;
+            height: 40px;
+            background:
+                radial-gradient(circle,
+                    #ff6b6b 0%,
+                    #ff6b6b 30%,
+                    transparent 30%,
+                    transparent 40%,
+                    #f9ca24 40%,
+                    #f9ca24 50%,
+                    transparent 50%
+                );
+            border: 3px solid #2c3e50;
+            border-radius: 50%;
+            transform: scale(0) rotate(0deg);
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            z-index: 6;
+            box-shadow: 2px 2px 0 #2c3e50;
+        }
+
+        .project-card:hover::before {
+            opacity: 1;
+        }
+
+        .project-card:hover::after {
+            transform: scale(1) rotate(180deg);
         }
 
         .project-card:hover {
-            transform: translateY(-10px) rotate(-2deg);
-            box-shadow: 10px 10px 0 #2c3e50;
+            transform: translateY(-8px);
+            box-shadow:
+                inset 0 0 0 4px white,
+                inset 0 0 0 8px #2c3e50,
+                10px 10px 0 #2c3e50;
+        }
+
+        .projects-container {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        .projects-grid {
+            counter-reset: project-counter;
+            position: relative;
+            display: flex;
+            align-items: flex-start;
+            gap: 2rem;
+            padding: 3rem 1rem;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: thin;
+            scrollbar-color: #667eea #f1f3f4;
+        }
+
+        .projects-grid::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .projects-grid::-webkit-scrollbar-track {
+            background: #f1f3f4;
+            border-radius: 4px;
+        }
+
+        .projects-grid::-webkit-scrollbar-thumb {
+            background: linear-gradient(90deg, #ff6b6b 0%, #4ecdc4 50%, #f9ca24 100%);
+            border-radius: 4px;
+        }
+
+        .projects-navigation {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .project-nav-arrow {
+            background: linear-gradient(135deg, #ff6b6b 0%, #f9ca24 100%);
+            color: white;
+            border: 3px solid #2c3e50;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+            box-shadow: 3px 3px 0 #2c3e50;
+            font-family: 'Bangers', cursive;
+        }
+
+        .project-nav-arrow:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 5px 5px 0 #2c3e50;
+        }
+
+        .project-nav-arrow:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            transform: none;
         }
 
         .project-img {
@@ -771,6 +1121,7 @@
             font-size: 3rem;
             position: relative;
             overflow: hidden;
+            border-bottom: 4px solid #2c3e50;
         }
 
         .project-img::before {
@@ -791,12 +1142,38 @@
 
         .project-content {
             padding: 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .project-content::before {
+            content: '#' counter(project-counter);
+            counter-increment: project-counter;
+            position: absolute;
+            top: -50px;
+            left: 10px;
+            background: white;
+            color: #2c3e50;
+            font-family: 'Bangers', cursive;
+            font-size: 3rem;
+            font-weight: bold;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 4px solid #2c3e50;
+            box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.2);
+            z-index: 10;
         }
 
         .project-title {
             font-size: 1.3rem;
             margin-bottom: 0.5rem;
             color: #333;
+            font-family: 'Bangers', cursive;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .project-tech {
@@ -861,12 +1238,35 @@
             border: 3px solid #2c3e50;
             position: relative;
             transition: all 0.3s;
+            overflow: visible;
+        }
+
+        .paper-item::after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: #ff6b6b;
+            border-radius: 50%;
+            bottom: -10px;
+            left: 20px;
+            opacity: 0;
+            transition: all 0.3s;
+            filter: blur(1px);
+            box-shadow:
+                -15px -5px 0 -5px #4ecdc4,
+                10px -8px 0 -8px #f9ca24,
+                -5px 15px 0 -10px #45b7d1;
         }
 
         .paper-item:hover {
             transform: translateX(10px) rotate(1deg);
             box-shadow: 8px 8px 0 #2c3e50;
             background: linear-gradient(45deg, #fff, #e8f4fd);
+        }
+
+        .paper-item:hover::after {
+            opacity: 0.3;
         }
 
         .paper-item::before {
@@ -1159,6 +1559,21 @@
             .timeline-navigation {
                 display: none;
             }
+
+            .projects-grid {
+                flex-direction: column;
+                align-items: center;
+                overflow-x: visible;
+            }
+
+            .project-card {
+                min-width: 100%;
+                max-width: 100%;
+            }
+
+            .projects-navigation {
+                display: none;
+            }
         }
     </style>
 </head>
@@ -1199,6 +1614,8 @@
 
     <!-- About Section -->
     <section id="about" class="about">
+        <div class="ink-splatter ink-splatter-1"></div>
+        <div class="ink-splatter ink-splatter-2"></div>
         <div class="container">
             <h2 class="section-title">About Me</h2>
             <div class="about-content">
@@ -1211,7 +1628,8 @@
                     <p>Outside of research, I enjoy staying active—bouldering, playing badminton, and going for runs or to the gym are some of my favorite ways to unwind.</p>
                 </div>
             </div>
-            
+
+            <h3 class="powers-title">⚡ SUPERPOWERS ⚡</h3>
             <div class="skills-grid">
                 <div class="skill-item">
                     <i class="fas fa-code"></i>
@@ -1239,6 +1657,8 @@
 
     <!-- CV Timeline Section -->
     <section id="cv" class="cv-timeline">
+        <div class="ink-splatter ink-splatter-3"></div>
+        <div class="ink-splatter ink-splatter-4"></div>
         <div class="container">
             <h2 class="section-title">Professional Journey</h2>
             <div class="timeline-container">
@@ -1358,9 +1778,12 @@
 
     <!-- Projects Section -->
     <section id="projects" class="projects">
+        <div class="ink-splatter ink-splatter-1"></div>
+        <div class="ink-splatter ink-splatter-3"></div>
         <div class="container">
             <h2 class="section-title">Featured Projects</h2>
-            <div class="projects-grid">
+            <div class="projects-container">
+                <div class="projects-grid" id="projectsSlider">
                 <div class="project-card">
                     <div class="project-img">
                         <i class="fas fa-project-diagram"></i>
@@ -1432,12 +1855,24 @@
                     </div>
                 </div>
 
+                </div>
+
+                <div class="projects-navigation">
+                    <button class="project-nav-arrow" id="projectPrevBtn" onclick="scrollProjects(-1)">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="project-nav-arrow" id="projectNextBtn" onclick="scrollProjects(1)">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Research & Papers Section -->
     <section id="research" class="research">
+        <div class="ink-splatter ink-splatter-2"></div>
+        <div class="ink-splatter ink-splatter-4"></div>
         <div class="container">
             <h2 class="section-title">Research & Publications</h2>
 
@@ -1635,6 +2070,40 @@
         // Initialize navigation buttons on load
         window.addEventListener('load', updateNavigationButtons);
         window.addEventListener('resize', updateNavigationButtons);
+
+        // Projects slider navigation functionality
+        function scrollProjects(direction) {
+            const slider = document.getElementById('projectsSlider');
+            const scrollAmount = 370; // Card width (350px) + gap (20px)
+            const currentScroll = slider.scrollLeft;
+            const newScroll = currentScroll + (direction * scrollAmount);
+
+            slider.scrollTo({
+                left: newScroll,
+                behavior: 'smooth'
+            });
+
+            // Update button states
+            setTimeout(updateProjectNavigationButtons, 300);
+        }
+
+        function updateProjectNavigationButtons() {
+            const slider = document.getElementById('projectsSlider');
+            const prevBtn = document.getElementById('projectPrevBtn');
+            const nextBtn = document.getElementById('projectNextBtn');
+
+            if (slider) {
+                const maxScroll = slider.scrollWidth - slider.clientWidth;
+                const currentScroll = slider.scrollLeft;
+
+                prevBtn.disabled = currentScroll <= 0;
+                nextBtn.disabled = currentScroll >= maxScroll;
+            }
+        }
+
+        // Initialize project navigation buttons on load
+        window.addEventListener('load', updateProjectNavigationButtons);
+        window.addEventListener('resize', updateProjectNavigationButtons);
     </script>
 </body>
 </html>
