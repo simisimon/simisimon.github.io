@@ -199,20 +199,31 @@
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 1.5rem;
         }
 
         .nav-links a {
-            color: black;
+            color: #2c3e50;
             text-decoration: none;
             transition: all 0.3s;
             font-weight: bold;
+            font-family: 'Bangers', cursive;
+            font-size: 1.2rem;
             position: relative;
+            padding: 0.5rem 1rem;
+            background: white;
+            border: 3px solid #2c3e50;
+            border-radius: 10px;
+            box-shadow: 3px 3px 0 #2c3e50;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .nav-links a:hover {
-            transform: scale(1.1) rotate(2deg);
-            color: #f9ca24;
+            transform: translateY(-3px) rotate(-2deg);
+            color: white;
+            background: linear-gradient(135deg, #ff6b6b, #f9ca24);
+            box-shadow: 5px 5px 0 #2c3e50;
         }
 
         .mobile-menu-toggle {
@@ -1886,6 +1897,233 @@
             50% { filter: invert(0.8) hue-rotate(180deg); }
         }
 
+        /* Easter Egg Counter */
+        .easter-egg-counter {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: white;
+            border: 4px solid #2c3e50;
+            border-radius: 15px;
+            padding: 1rem 1.5rem;
+            font-family: 'Bangers', cursive;
+            font-size: 1.2rem;
+            color: #2c3e50;
+            box-shadow: 5px 5px 0 #2c3e50;
+            z-index: 9998;
+            transition: all 0.3s;
+            text-align: center;
+            min-width: 200px;
+        }
+
+        .easter-egg-counter:hover {
+            transform: translateY(-3px) rotate(-2deg);
+            box-shadow: 7px 7px 0 #2c3e50;
+        }
+
+        .easter-egg-counter .count {
+            font-size: 2rem;
+            color: #ff6b6b;
+            text-shadow: 2px 2px 0 #f9ca24;
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        .easter-egg-counter .label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .easter-egg-counter.complete {
+            background: linear-gradient(135deg, #ff6b6b, #f9ca24, #4ecdc4);
+            animation: counterPulse 1s ease-in-out infinite;
+        }
+
+        @keyframes counterPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .all-found-message {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            border: 6px solid #2c3e50;
+            border-radius: 25px;
+            padding: 3rem;
+            font-family: 'Bangers', cursive;
+            text-align: center;
+            box-shadow: 10px 10px 0 #2c3e50;
+            z-index: 10002;
+            animation: allFoundAnimation 0.5s ease-out;
+            max-width: 500px;
+        }
+
+        @keyframes allFoundAnimation {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0) rotate(-10deg);
+            }
+            100% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1) rotate(0deg);
+            }
+        }
+
+        .all-found-message h2 {
+            font-size: 3rem;
+            color: #ff6b6b;
+            text-shadow: 3px 3px 0 #f9ca24;
+            margin-bottom: 1rem;
+        }
+
+        .all-found-message p {
+            font-size: 1.3rem;
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            font-family: 'Comic Neue', cursive;
+        }
+
+        .all-found-message button {
+            background: linear-gradient(135deg, #ff6b6b, #f9ca24);
+            border: 3px solid #2c3e50;
+            border-radius: 15px;
+            padding: 1rem 2rem;
+            font-family: 'Bangers', cursive;
+            font-size: 1.3rem;
+            color: #2c3e50;
+            cursor: pointer;
+            box-shadow: 4px 4px 0 #2c3e50;
+            transition: all 0.3s;
+            text-transform: uppercase;
+        }
+
+        .all-found-message button:hover {
+            transform: translateY(-3px);
+            box-shadow: 6px 6px 0 #2c3e50;
+        }
+
+        /* Hint Button */
+        .hint-button {
+            position: fixed;
+            bottom: 20px;
+            right: 240px;
+            background: #4ecdc4;
+            border: 4px solid #2c3e50;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-family: 'Bangers', cursive;
+            font-size: 2rem;
+            color: #2c3e50;
+            cursor: pointer;
+            box-shadow: 4px 4px 0 #2c3e50;
+            z-index: 9998;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hint-button:hover {
+            transform: translateY(-5px) rotate(10deg);
+            box-shadow: 6px 6px 0 #2c3e50;
+            background: #f9ca24;
+        }
+
+        .hint-modal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            border: 6px solid #2c3e50;
+            border-radius: 25px;
+            padding: 2.5rem;
+            font-family: 'Comic Neue', cursive;
+            box-shadow: 10px 10px 0 #2c3e50;
+            z-index: 10002;
+            max-width: 500px;
+            animation: hintModalAnimation 0.3s ease-out;
+        }
+
+        @keyframes hintModalAnimation {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.8);
+            }
+            100% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+
+        .hint-modal h2 {
+            font-family: 'Bangers', cursive;
+            font-size: 2.5rem;
+            color: #ff6b6b;
+            text-shadow: 2px 2px 0 #f9ca24;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .hint-modal ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 2rem;
+        }
+
+        .hint-modal li {
+            background: linear-gradient(135deg, #fff5e6, #e8f4fd);
+            border: 3px solid #2c3e50;
+            border-radius: 15px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            color: #2c3e50;
+            box-shadow: 3px 3px 0 rgba(44, 62, 80, 0.3);
+        }
+
+        .hint-modal li::before {
+            content: '💡';
+            margin-right: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .hint-modal button {
+            background: linear-gradient(135deg, #4ecdc4, #45b7d1);
+            border: 3px solid #2c3e50;
+            border-radius: 15px;
+            padding: 0.8rem 2rem;
+            font-family: 'Bangers', cursive;
+            font-size: 1.2rem;
+            color: #2c3e50;
+            cursor: pointer;
+            box-shadow: 4px 4px 0 #2c3e50;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .hint-modal button:hover {
+            transform: translateY(-3px);
+            box-shadow: 6px 6px 0 #2c3e50;
+        }
+
+        .hint-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 10001;
+        }
+
         /* Shadow Clone Effect */
         .clone-smoke {
             position: fixed;
@@ -2520,6 +2758,91 @@
         </div>
     </footer>
 
+    <!-- Easter Egg Counter -->
+    <div class="easter-egg-counter" id="easterEggCounter">
+        <span class="count" id="eggCount">0/4</span>
+        <span class="label">Easter Eggs Found</span>
+    </div>
+
+    <!-- Hint Button -->
+    <button class="hint-button" id="hintButton" onclick="showHints()" title="Need a hint?">?</button>
+
+    <script>
+        // Easter Egg Tracking System
+        const foundEasterEggs = new Set();
+        const totalEasterEggs = 4;
+
+        function updateEasterEggCounter() {
+            const counter = document.getElementById('eggCount');
+            const counterBox = document.getElementById('easterEggCounter');
+
+            counter.textContent = `${foundEasterEggs.size}/${totalEasterEggs}`;
+
+            // Check if all easter eggs are found
+            if (foundEasterEggs.size === totalEasterEggs) {
+                counterBox.classList.add('complete');
+                showAllFoundMessage();
+            }
+        }
+
+        function registerEasterEgg(eggName) {
+            if (!foundEasterEggs.has(eggName)) {
+                foundEasterEggs.add(eggName);
+                console.log(`🎉 Easter Egg Found: ${eggName}`);
+                updateEasterEggCounter();
+            }
+        }
+
+        function showAllFoundMessage() {
+            // Only show once
+            if (document.querySelector('.all-found-message')) return;
+
+            const message = document.createElement('div');
+            message.className = 'all-found-message';
+            message.innerHTML = `
+                <h2>CONGRATULATIONS!</h2>
+                <p>You found all <strong>${totalEasterEggs}</strong> easter eggs!</p>
+                <p>🎮 Power Up (↑↑↓↓)<br>
+                ⚡ Conqueror's Haki (HAKI)<br>
+                🌀 Domain Expansion (DOMAIN)<br>
+                👥 Shadow Clone (CLONE)</p>
+                <button onclick="this.parentElement.remove()">Awesome!</button>
+            `;
+            document.body.appendChild(message);
+        }
+
+        function showHints() {
+            // Create overlay
+            const overlay = document.createElement('div');
+            overlay.className = 'hint-overlay';
+            overlay.onclick = hideHints;
+
+            // Create hint modal
+            const modal = document.createElement('div');
+            modal.className = 'hint-modal';
+            modal.innerHTML = `
+                <h2>EASTER EGG HINTS</h2>
+                <ul>
+                    <li><strong>Dragon Ball:</strong> Try the classic Konami code pattern with arrow keys (↑↑↓↓)</li>
+                    <li><strong>One Piece:</strong> Type the name of Luffy's intimidation technique (4 letters)</li>
+                    <li><strong>Jujutsu Kaisen:</strong> Type what sorcerers create to trap opponents (6 letters)</li>
+                    <li><strong>Naruto:</strong> Type Naruto's signature copy technique (5 letters)</li>
+                </ul>
+                <button onclick="hideHints()">Got It!</button>
+            `;
+
+            document.body.appendChild(overlay);
+            document.body.appendChild(modal);
+        }
+
+        function hideHints() {
+            const overlay = document.querySelector('.hint-overlay');
+            const modal = document.querySelector('.hint-modal');
+            if (overlay) overlay.remove();
+            if (modal) modal.remove();
+        }
+    </script>
+
     <script>
         // Mobile menu toggle
         const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
@@ -2670,12 +2993,12 @@
         let hakiCode = ['h', 'a', 'k', 'i'];
         let hakiIndex = 0;
 
-        // Domain Expansion (D D D D)
-        let domainCode = ['d', 'd', 'd', 'd'];
+        // Domain Expansion (D O M A I N)
+        let domainCode = ['d', 'o', 'm', 'a', 'i', 'n'];
         let domainIndex = 0;
 
-        // Shadow Clone (C C C C)
-        let cloneCode = ['c', 'c', 'c', 'c'];
+        // Shadow Clone (C L O N E)
+        let cloneCode = ['c', 'l', 'o', 'n', 'e'];
         let cloneIndex = 0;
 
         document.addEventListener('keydown', function(e) {
@@ -2739,6 +3062,9 @@
         });
 
         function activatePowerUp() {
+            // Register easter egg
+            registerEasterEgg('Power Up');
+
             // Add screen shake
             document.body.classList.add('screen-shake');
 
@@ -2805,6 +3131,9 @@
 
         // Conqueror's Haki Activation
         function activateConquerorsHaki() {
+            // Register easter egg
+            registerEasterEgg("Conqueror's Haki");
+
             // Add intense screen shake
             document.body.classList.add('haki-shake');
 
@@ -2871,6 +3200,9 @@
 
         // Domain Expansion Activation
         function activateDomainExpansion() {
+            // Register easter egg
+            registerEasterEgg('Domain Expansion');
+
             // Create expanding domain overlay
             const overlay = document.createElement('div');
             overlay.className = 'domain-overlay';
@@ -2905,6 +3237,9 @@
 
         // Shadow Clone Activation
         function activateShadowClone() {
+            // Register easter egg
+            registerEasterEgg('Shadow Clone');
+
             const profileImg = document.querySelector('.profile-img');
 
             if (!profileImg) {
