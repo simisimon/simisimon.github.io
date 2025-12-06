@@ -1648,6 +1648,337 @@
             20%, 40%, 60%, 80% { transform: translate(5px, -5px); }
         }
 
+        /* Conqueror's Haki Effect */
+        .haki-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: radial-gradient(circle, transparent 0%, rgba(75, 0, 130, 0.7) 100%);
+            z-index: 9999;
+            pointer-events: none;
+            animation: hakiPulse 2s ease-out;
+        }
+
+        @keyframes hakiPulse {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
+        }
+
+        .haki-lightning {
+            position: fixed;
+            background: linear-gradient(0deg, transparent, #ff0000 20%, #000000 50%, #8b0000 80%, transparent);
+            width: 4px;
+            height: 0;
+            z-index: 10000;
+            pointer-events: none;
+            box-shadow: 0 0 15px #ff0000, 0 0 30px #8b0000, 0 0 45px #ff0000;
+            transform-origin: top center;
+            animation: lightningRadiate 0.4s ease-out;
+        }
+
+        @keyframes lightningRadiate {
+            0% {
+                opacity: 0;
+                height: 0;
+            }
+            30% {
+                opacity: 1;
+                height: 150vh;
+            }
+            60% {
+                opacity: 0.8;
+                height: 150vh;
+            }
+            100% {
+                opacity: 0;
+                height: 150vh;
+            }
+        }
+
+        .haki-text {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Bangers', cursive;
+            font-size: 7rem;
+            color: #8b0000;
+            text-shadow:
+                5px 5px 0 #000,
+                -2px -2px 0 #000,
+                0 0 30px rgba(255, 0, 0, 1),
+                0 0 60px rgba(139, 0, 0, 1);
+            z-index: 10001;
+            animation: hakiTextAnimation 2.5s ease-out forwards;
+            pointer-events: none;
+        }
+
+        @keyframes hakiTextAnimation {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0);
+            }
+            30% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.3);
+            }
+            70% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.1);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+        }
+
+        .haki-shake {
+            animation: hakiShake 1s ease-in-out;
+        }
+
+        @keyframes hakiShake {
+            0%, 100% { transform: translate(0, 0); }
+            5% { transform: translate(-20px, 15px) rotate(2deg); }
+            10% { transform: translate(15px, -20px) rotate(-2deg); }
+            15% { transform: translate(-18px, 18px) rotate(2deg); }
+            20% { transform: translate(20px, -15px) rotate(-2deg); }
+            25% { transform: translate(-15px, 20px) rotate(2deg); }
+            30% { transform: translate(18px, -18px) rotate(-2deg); }
+            35% { transform: translate(-20px, 15px) rotate(2deg); }
+            40% { transform: translate(15px, -20px) rotate(-2deg); }
+            45% { transform: translate(-18px, 18px) rotate(2deg); }
+            50% { transform: translate(20px, -15px) rotate(-2deg); }
+            55% { transform: translate(-15px, 20px) rotate(2deg); }
+            60% { transform: translate(18px, -18px) rotate(-2deg); }
+            65% { transform: translate(-12px, 12px) rotate(1deg); }
+            70% { transform: translate(12px, -12px) rotate(-1deg); }
+            75% { transform: translate(-10px, 10px) rotate(1deg); }
+            80% { transform: translate(10px, -10px) rotate(-1deg); }
+            85% { transform: translate(-8px, 8px) rotate(1deg); }
+            90% { transform: translate(8px, -8px) rotate(-1deg); }
+            95% { transform: translate(-5px, 5px) rotate(0.5deg); }
+        }
+
+        .haki-faint {
+            animation: faintEffect 2s ease-out;
+        }
+
+        @keyframes faintEffect {
+            0% { opacity: 1; transform: scale(1); }
+            20% { opacity: 0.1; transform: scale(0.95); }
+            40% { opacity: 0.3; transform: scale(0.97); }
+            60% { opacity: 0.15; transform: scale(0.96); }
+            80% { opacity: 0.5; transform: scale(0.98); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        /* Domain Expansion Effect */
+        .domain-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: radial-gradient(circle, rgba(138, 43, 226, 0.3) 0%, rgba(0, 0, 0, 0.8) 100%);
+            z-index: 9999;
+            pointer-events: none;
+            animation: domainExpand 3s ease-out;
+        }
+
+        @keyframes domainExpand {
+            0% {
+                opacity: 0;
+                clip-path: circle(0% at 50% 50%);
+            }
+            30% {
+                opacity: 1;
+                clip-path: circle(100% at 50% 50%);
+            }
+            70% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+
+        .domain-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image:
+                repeating-linear-gradient(0deg, transparent, transparent 50px, rgba(138, 43, 226, 0.3) 50px, rgba(138, 43, 226, 0.3) 51px),
+                repeating-linear-gradient(90deg, transparent, transparent 50px, rgba(138, 43, 226, 0.3) 50px, rgba(138, 43, 226, 0.3) 51px);
+            z-index: 10000;
+            pointer-events: none;
+            animation: domainGridAnimation 3s ease-out;
+        }
+
+        @keyframes domainGridAnimation {
+            0% {
+                opacity: 0;
+                transform: scale(0.5) rotate(0deg);
+            }
+            30% {
+                opacity: 1;
+                transform: scale(1) rotate(0deg);
+            }
+            70% {
+                opacity: 1;
+                transform: scale(1) rotate(5deg);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(1.2) rotate(10deg);
+            }
+        }
+
+        .domain-text {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Bangers', cursive;
+            font-size: 6rem;
+            color: #8a2be2;
+            text-shadow:
+                5px 5px 0 #000,
+                -2px -2px 0 #000,
+                0 0 30px rgba(138, 43, 226, 1),
+                0 0 60px rgba(138, 43, 226, 0.8);
+            z-index: 10001;
+            animation: domainTextAnimation 3s ease-out forwards;
+            pointer-events: none;
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        @keyframes domainTextAnimation {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(3);
+            }
+            30% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+            70% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.5);
+            }
+        }
+
+        .domain-invert {
+            filter: invert(0.8) hue-rotate(180deg);
+            animation: domainInvertPulse 3s ease-out;
+        }
+
+        @keyframes domainInvertPulse {
+            0%, 100% { filter: invert(0) hue-rotate(0deg); }
+            50% { filter: invert(0.8) hue-rotate(180deg); }
+        }
+
+        /* Shadow Clone Effect */
+        .clone-smoke {
+            position: fixed;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, rgba(200, 200, 200, 0.4) 50%, transparent 100%);
+            border-radius: 50%;
+            z-index: 10000;
+            pointer-events: none;
+            animation: smokeExpand 1s ease-out forwards;
+        }
+
+        @keyframes smokeExpand {
+            0% {
+                transform: scale(0);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(3);
+                opacity: 0;
+            }
+        }
+
+        .clone-image {
+            position: fixed;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 4px solid #2c3e50;
+            z-index: 9999;
+            pointer-events: none;
+            animation: cloneAppear 2s ease-out forwards;
+            box-shadow: 0 0 30px rgba(255, 107, 107, 0.8);
+        }
+
+        @keyframes cloneAppear {
+            0% {
+                opacity: 0;
+                transform: scale(0) rotate(0deg);
+            }
+            30% {
+                opacity: 1;
+                transform: scale(1) rotate(5deg);
+            }
+            70% {
+                opacity: 1;
+                transform: scale(1) rotate(-5deg);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(0.5) rotate(0deg);
+            }
+        }
+
+        .clone-text {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Bangers', cursive;
+            font-size: 5rem;
+            color: #ff6b6b;
+            text-shadow:
+                5px 5px 0 #000,
+                -2px -2px 0 #000,
+                0 0 30px rgba(255, 107, 107, 1),
+                0 0 60px rgba(255, 107, 107, 0.8);
+            z-index: 10001;
+            animation: cloneTextAnimation 2.5s ease-out forwards;
+            pointer-events: none;
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        @keyframes cloneTextAnimation {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0);
+            }
+            30% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.2);
+            }
+            70% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.8);
+            }
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .mobile-menu-toggle {
@@ -2335,9 +2666,22 @@
         let konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown'];
         let konamiIndex = 0;
 
+        // Conqueror's Haki (H A K I)
+        let hakiCode = ['h', 'a', 'k', 'i'];
+        let hakiIndex = 0;
+
+        // Domain Expansion (D D D D)
+        let domainCode = ['d', 'd', 'd', 'd'];
+        let domainIndex = 0;
+
+        // Shadow Clone (C C C C)
+        let cloneCode = ['c', 'c', 'c', 'c'];
+        let cloneIndex = 0;
+
         document.addEventListener('keydown', function(e) {
             const key = e.key.toLowerCase();
 
+            // Check Konami Code
             if (key === konamiCode[konamiIndex] || e.key === konamiCode[konamiIndex]) {
                 konamiIndex++;
                 console.log('✓ Konami progress:', konamiIndex, '/', konamiCode.length);
@@ -2349,6 +2693,48 @@
                 }
             } else {
                 konamiIndex = 0;
+            }
+
+            // Check Haki Code
+            if (key === hakiCode[hakiIndex]) {
+                hakiIndex++;
+                console.log('⚡ Haki progress:', hakiIndex, '/', hakiCode.length);
+
+                if (hakiIndex === hakiCode.length) {
+                    console.log('⚡ CONQUEROR\'S HAKI ACTIVATED! ⚡');
+                    activateConquerorsHaki();
+                    hakiIndex = 0;
+                }
+            } else {
+                hakiIndex = 0;
+            }
+
+            // Check Domain Code
+            if (key === domainCode[domainIndex]) {
+                domainIndex++;
+                console.log('🌀 Domain progress:', domainIndex, '/', domainCode.length);
+
+                if (domainIndex === domainCode.length) {
+                    console.log('🌀 DOMAIN EXPANSION ACTIVATED! 🌀');
+                    activateDomainExpansion();
+                    domainIndex = 0;
+                }
+            } else {
+                domainIndex = 0;
+            }
+
+            // Check Clone Code
+            if (key === cloneCode[cloneIndex]) {
+                cloneIndex++;
+                console.log('👥 Clone progress:', cloneIndex, '/', cloneCode.length);
+
+                if (cloneIndex === cloneCode.length) {
+                    console.log('👥 SHADOW CLONE ACTIVATED! 👥');
+                    activateShadowClone();
+                    cloneIndex = 0;
+                }
+            } else {
+                cloneIndex = 0;
             }
         });
 
@@ -2415,6 +2801,172 @@
                     });
                 }, 5000);
             }, 3000);
+        }
+
+        // Conqueror's Haki Activation
+        function activateConquerorsHaki() {
+            // Add intense screen shake
+            document.body.classList.add('haki-shake');
+
+            // Create purple overlay
+            const overlay = document.createElement('div');
+            overlay.className = 'haki-overlay';
+            document.body.appendChild(overlay);
+
+            // Get profile image position as center point
+            const profileImg = document.querySelector('.profile-img');
+            let centerX = window.innerWidth / 2;
+            let centerY = window.innerHeight / 2;
+
+            if (profileImg) {
+                const rect = profileImg.getBoundingClientRect();
+                centerX = rect.left + rect.width / 2;
+                centerY = rect.top + rect.height / 2;
+            }
+
+            // Create lightning bolts radiating from center
+            const numberOfBolts = 16;
+            for (let i = 0; i < numberOfBolts; i++) {
+                setTimeout(() => {
+                    const lightning = document.createElement('div');
+                    lightning.className = 'haki-lightning';
+
+                    // Calculate angle for even distribution
+                    const angle = (360 / numberOfBolts) * i + Math.random() * 10;
+
+                    // Use transform to position and rotate from the center point
+                    lightning.style.left = '0';
+                    lightning.style.top = '0';
+                    lightning.style.transformOrigin = 'top center';
+                    lightning.style.transform = `translate(${centerX - 2}px, ${centerY}px) rotate(${angle}deg)`;
+
+                    document.body.appendChild(lightning);
+
+                    setTimeout(() => lightning.remove(), 400);
+                }, i * 50);
+            }
+
+            // Create "CONQUEROR'S HAKI!" text
+            const hakiText = document.createElement('div');
+            hakiText.className = 'haki-text';
+            hakiText.textContent = "CONQUEROR'S HAKI!";
+            document.body.appendChild(hakiText);
+
+            // Make ALL skill items and project cards faint with staggered timing
+            const allElements = document.querySelectorAll('.skill-item, .project-card, .paper-item, .timeline-content');
+            allElements.forEach((item, index) => {
+                setTimeout(() => {
+                    item.classList.add('haki-faint');
+                    setTimeout(() => item.classList.remove('haki-faint'), 2000);
+                }, index * 80);
+            });
+
+            // Cleanup
+            setTimeout(() => {
+                document.body.classList.remove('haki-shake');
+                overlay.remove();
+                hakiText.remove();
+            }, 3000);
+        }
+
+        // Domain Expansion Activation
+        function activateDomainExpansion() {
+            // Create expanding domain overlay
+            const overlay = document.createElement('div');
+            overlay.className = 'domain-overlay';
+            document.body.appendChild(overlay);
+
+            // Create geometric grid
+            const grid = document.createElement('div');
+            grid.className = 'domain-grid';
+            document.body.appendChild(grid);
+
+            // Create "DOMAIN EXPANSION" text
+            const domainText = document.createElement('div');
+            domainText.className = 'domain-text';
+            domainText.innerHTML = 'DOMAIN<br>EXPANSION';
+            document.body.appendChild(domainText);
+
+            // Invert colors on sections
+            document.querySelectorAll('section').forEach(section => {
+                section.classList.add('domain-invert');
+            });
+
+            // Cleanup
+            setTimeout(() => {
+                overlay.remove();
+                grid.remove();
+                domainText.remove();
+                document.querySelectorAll('section').forEach(section => {
+                    section.classList.remove('domain-invert');
+                });
+            }, 3000);
+        }
+
+        // Shadow Clone Activation
+        function activateShadowClone() {
+            const profileImg = document.querySelector('.profile-img');
+
+            if (!profileImg) {
+                console.log('Profile image not found!');
+                return;
+            }
+
+            // Get the profile image position and source
+            const rect = profileImg.getBoundingClientRect();
+            const imgSrc = profileImg.src;
+
+            // Create "KAGE BUNSHIN NO JUTSU!" text
+            const cloneText = document.createElement('div');
+            cloneText.className = 'clone-text';
+            cloneText.innerHTML = 'KAGE BUNSHIN<br>NO JUTSU!';
+            document.body.appendChild(cloneText);
+
+            // Create smoke effect at original position
+            const smoke = document.createElement('div');
+            smoke.className = 'clone-smoke';
+            smoke.style.left = rect.left + rect.width / 2 - 50 + 'px';
+            smoke.style.top = rect.top + rect.height / 2 - 50 + 'px';
+            document.body.appendChild(smoke);
+
+            // Create 5 clones at different positions
+            const numberOfClones = 5;
+            for (let i = 0; i < numberOfClones; i++) {
+                setTimeout(() => {
+                    // Create clone image
+                    const clone = document.createElement('img');
+                    clone.src = imgSrc;
+                    clone.className = 'clone-image';
+
+                    // Random position on screen
+                    const randomX = Math.random() * (window.innerWidth - 200);
+                    const randomY = Math.random() * (window.innerHeight - 200);
+
+                    clone.style.left = randomX + 'px';
+                    clone.style.top = randomY + 'px';
+
+                    document.body.appendChild(clone);
+
+                    // Create smoke at clone position
+                    const cloneSmoke = document.createElement('div');
+                    cloneSmoke.className = 'clone-smoke';
+                    cloneSmoke.style.left = randomX + 100 - 50 + 'px';
+                    cloneSmoke.style.top = randomY + 100 - 50 + 'px';
+                    document.body.appendChild(cloneSmoke);
+
+                    // Remove clone after animation
+                    setTimeout(() => {
+                        clone.remove();
+                        cloneSmoke.remove();
+                    }, 2000);
+                }, i * 300);
+            }
+
+            // Cleanup
+            setTimeout(() => {
+                cloneText.remove();
+                smoke.remove();
+            }, 2500);
         }
     </script>
 </body>
