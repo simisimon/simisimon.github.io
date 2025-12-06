@@ -594,6 +594,48 @@
             margin: 0 auto;
             display: block;
             border: 4px solid #2c3e50;
+            position: relative;
+            animation: energyAuraPulse 3s ease-in-out infinite;
+        }
+
+        /* Anime-style energy aura effect */
+        @keyframes energyAuraPulse {
+            0%, 100% {
+                box-shadow:
+                    0 0 30px rgba(255, 107, 107, 1),
+                    0 0 60px rgba(255, 107, 107, 0.8),
+                    0 0 90px rgba(78, 205, 196, 0.6),
+                    0 0 120px rgba(249, 202, 36, 0.4),
+                    0 0 150px rgba(69, 183, 209, 0.3),
+                    inset 0 0 30px rgba(255, 255, 255, 0.2);
+            }
+            25% {
+                box-shadow:
+                    0 0 35px rgba(78, 205, 196, 1),
+                    0 0 70px rgba(78, 205, 196, 0.8),
+                    0 0 100px rgba(249, 202, 36, 0.6),
+                    0 0 130px rgba(69, 183, 209, 0.4),
+                    0 0 160px rgba(255, 107, 107, 0.3),
+                    inset 0 0 30px rgba(255, 255, 255, 0.2);
+            }
+            50% {
+                box-shadow:
+                    0 0 30px rgba(249, 202, 36, 1),
+                    0 0 65px rgba(249, 202, 36, 0.8),
+                    0 0 95px rgba(69, 183, 209, 0.6),
+                    0 0 125px rgba(255, 107, 107, 0.4),
+                    0 0 155px rgba(78, 205, 196, 0.3),
+                    inset 0 0 30px rgba(255, 255, 255, 0.2);
+            }
+            75% {
+                box-shadow:
+                    0 0 35px rgba(69, 183, 209, 1),
+                    0 0 70px rgba(69, 183, 209, 0.8),
+                    0 0 100px rgba(255, 107, 107, 0.6),
+                    0 0 130px rgba(78, 205, 196, 0.4),
+                    0 0 160px rgba(249, 202, 36, 0.3),
+                    inset 0 0 30px rgba(255, 255, 255, 0.2);
+            }
         }
 
         .about-text {
@@ -641,6 +683,30 @@
             border: 3px solid #2c3e50;
             position: relative;
             overflow: visible;
+        }
+
+        /* Anime-style speed lines effect */
+        .skill-item:hover,
+        .project-card:hover {
+            background-image: repeating-conic-gradient(
+                from 0deg at 50% 50%,
+                transparent 0deg 3deg,
+                rgba(255, 107, 107, 0.08) 3deg 6deg,
+                transparent 6deg 9deg,
+                rgba(78, 205, 196, 0.08) 9deg 12deg
+            );
+            animation: speedLinesSpin 0.6s ease-out;
+        }
+
+        @keyframes speedLinesSpin {
+            0% {
+                background-size: 0% 0%;
+                background-position: center;
+            }
+            100% {
+                background-size: 400% 400%;
+                background-position: center;
+            }
         }
 
         .skill-item::before {
@@ -739,6 +805,62 @@
         .skill-item p {
             position: relative;
             z-index: 2;
+        }
+
+        /* Anime-style power level display */
+        .power-level {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: linear-gradient(135deg, #ff6b6b, #f9ca24);
+            color: #2c3e50;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-family: 'Bangers', cursive;
+            font-size: 1rem;
+            border: 3px solid #2c3e50;
+            box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.2);
+            z-index: 15;
+            animation: powerLevelGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes powerLevelGlow {
+            0%, 100% {
+                text-shadow: 0 0 5px rgba(255, 107, 107, 0.5);
+            }
+            50% {
+                text-shadow: 0 0 10px rgba(249, 202, 36, 0.8);
+            }
+        }
+
+        .power-bar {
+            width: 100%;
+            height: 8px;
+            background: #e0e0e0;
+            border-radius: 10px;
+            border: 2px solid #2c3e50;
+            margin-top: 1rem;
+            overflow: hidden;
+            position: relative;
+            z-index: 2;
+        }
+
+        .power-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ff6b6b, #f9ca24, #4ecdc4);
+            border-radius: 8px;
+            transition: width 1s ease-out;
+            animation: powerBarPulse 2s ease-in-out infinite;
+            box-shadow: 0 0 10px rgba(255, 107, 107, 0.5);
+        }
+
+        @keyframes powerBarPulse {
+            0%, 100% {
+                box-shadow: 0 0 10px rgba(255, 107, 107, 0.5);
+            }
+            50% {
+                box-shadow: 0 0 20px rgba(249, 202, 36, 0.8);
+            }
         }
 
         /* Timeline CV */
@@ -1430,6 +1552,102 @@
             }
         }
 
+        /* Konami Code Power-Up Effect */
+        .super-saiyan {
+            animation: superSaiyanPowerUp 2s ease-out;
+        }
+
+        @keyframes superSaiyanPowerUp {
+            0% {
+                filter: brightness(1);
+            }
+            50% {
+                filter: brightness(2) saturate(2);
+                transform: scale(1.02);
+            }
+            100% {
+                filter: brightness(1);
+            }
+        }
+
+        .golden-aura {
+            box-shadow:
+                0 0 40px rgba(249, 202, 36, 1),
+                0 0 80px rgba(255, 215, 0, 0.8),
+                0 0 120px rgba(255, 193, 7, 0.6),
+                inset 0 0 40px rgba(255, 255, 255, 0.3) !important;
+            animation: goldenAuraFlicker 0.3s ease-in-out infinite;
+        }
+
+        @keyframes goldenAuraFlicker {
+            0%, 100% {
+                box-shadow:
+                    0 0 40px rgba(249, 202, 36, 1),
+                    0 0 80px rgba(255, 215, 0, 0.8),
+                    0 0 120px rgba(255, 193, 7, 0.6),
+                    inset 0 0 40px rgba(255, 255, 255, 0.3);
+            }
+            50% {
+                box-shadow:
+                    0 0 50px rgba(249, 202, 36, 1),
+                    0 0 100px rgba(255, 215, 0, 1),
+                    0 0 150px rgba(255, 193, 7, 0.8),
+                    inset 0 0 50px rgba(255, 255, 255, 0.5);
+            }
+        }
+
+        .power-up-text {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Bangers', cursive;
+            font-size: 8rem;
+            color: #f9ca24;
+            text-shadow:
+                5px 5px 0 #2c3e50,
+                -2px -2px 0 #2c3e50,
+                0 0 30px rgba(249, 202, 36, 1),
+                0 0 60px rgba(255, 215, 0, 1),
+                0 0 90px rgba(255, 215, 0, 0.8);
+            z-index: 10000;
+            animation: powerUpTextAnimation 3s ease-out forwards;
+            pointer-events: none;
+            background: linear-gradient(45deg, #ff6b6b, #f9ca24, #4ecdc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        @keyframes powerUpTextAnimation {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0) rotate(-10deg);
+            }
+            30% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.5) rotate(5deg);
+            }
+            70% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.3) rotate(-3deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(2) rotate(0deg);
+            }
+        }
+
+        .screen-shake {
+            animation: screenShake 0.5s ease-in-out;
+        }
+
+        @keyframes screenShake {
+            0%, 100% { transform: translate(0, 0); }
+            10%, 30%, 50%, 70%, 90% { transform: translate(-5px, 5px); }
+            20%, 40%, 60%, 80% { transform: translate(5px, -5px); }
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .mobile-menu-toggle {
@@ -1632,24 +1850,32 @@
             <h3 class="powers-title">⚡ SUPERPOWERS ⚡</h3>
             <div class="skills-grid">
                 <div class="skill-item">
+                    <div class="power-level">9001</div>
                     <i class="fas fa-code"></i>
                     <h3>Technology Stack</h3>
                     <p>Proficient in a range of programming languages and technologies including Python, Java, C#, Node.js, Spring, Maven, and Docker.</p>
+                    <div class="power-bar"><div class="power-fill" style="width: 90%;"></div></div>
                 </div>
                 <div class="skill-item">
+                    <div class="power-level">8500</div>
                     <i class="fas fa-brain"></i>
                     <h3>Artificial Intelligence</h3>
                     <p>Hands-on experience with LLMs, embedding models, and advanced architectures such as RAG and agent-based systems.</p>
+                    <div class="power-bar"><div class="power-fill" style="width: 85%;"></div></div>
                 </div>
                 <div class="skill-item">
+                    <div class="power-level">9200</div>
                     <i class="fas fa-search"></i>
                     <h3>Research</h3>
                     <p>Extensive experience in empirical research, academic publishing, presenting, and applying research insights to practical software prototypes.</p>
+                    <div class="power-bar"><div class="power-fill" style="width: 92%;"></div></div>
                 </div>
                 <div class="skill-item">
+                    <div class="power-level">8800</div>
                     <i class="fas fa-users"></i>
                     <h3>Project Organization</h3>
                     <p>Skilled in supervising students and organizing courses such as software engineering internships and and SE4AI.</p>
+                    <div class="power-bar"><div class="power-fill" style="width: 88%;"></div></div>
                 </div>
             </div>
         </div>
@@ -2104,6 +2330,92 @@
         // Initialize project navigation buttons on load
         window.addEventListener('load', updateProjectNavigationButtons);
         window.addEventListener('resize', updateProjectNavigationButtons);
+
+        // Konami Code Easter Egg (↑↑↓↓)
+        let konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown'];
+        let konamiIndex = 0;
+
+        document.addEventListener('keydown', function(e) {
+            const key = e.key.toLowerCase();
+
+            if (key === konamiCode[konamiIndex] || e.key === konamiCode[konamiIndex]) {
+                konamiIndex++;
+                console.log('✓ Konami progress:', konamiIndex, '/', konamiCode.length);
+
+                if (konamiIndex === konamiCode.length) {
+                    console.log('🎮 KONAMI CODE ACTIVATED! 🎮');
+                    activatePowerUp();
+                    konamiIndex = 0;
+                }
+            } else {
+                konamiIndex = 0;
+            }
+        });
+
+        function activatePowerUp() {
+            // Add screen shake
+            document.body.classList.add('screen-shake');
+
+            // Add super saiyan effect to all sections
+            document.querySelectorAll('section').forEach(section => {
+                section.classList.add('super-saiyan');
+            });
+
+            // Add golden aura to profile image
+            const profileImg = document.querySelector('.profile-img');
+            if (profileImg) {
+                profileImg.classList.add('golden-aura');
+            }
+
+            // Create and show power-up text
+            const powerUpText = document.createElement('div');
+            powerUpText.className = 'power-up-text';
+            powerUpText.textContent = 'POWER UP!';
+            document.body.appendChild(powerUpText);
+
+            // Multiply all power levels by 10
+            document.querySelectorAll('.power-level').forEach(level => {
+                const currentValue = parseInt(level.textContent);
+                level.textContent = currentValue * 10;
+                level.style.fontSize = '1.3rem';
+            });
+
+            // Make all power bars full
+            document.querySelectorAll('.power-fill').forEach(fill => {
+                fill.style.width = '100%';
+                fill.style.background = 'linear-gradient(90deg, #f9ca24, #ffd700, #ffed4e)';
+            });
+
+            // Remove effects after animation
+            setTimeout(() => {
+                document.body.classList.remove('screen-shake');
+                document.querySelectorAll('section').forEach(section => {
+                    section.classList.remove('super-saiyan');
+                });
+                powerUpText.remove();
+
+                // Keep golden aura on profile image for longer
+                setTimeout(() => {
+                    if (profileImg) {
+                        profileImg.classList.remove('golden-aura');
+                    }
+
+                    // Reset power levels
+                    document.querySelectorAll('.power-level').forEach((level, index) => {
+                        const originalValues = [9001, 8500, 9200, 8800];
+                        level.textContent = originalValues[index];
+                        level.style.fontSize = '1rem';
+                    });
+
+                    // Reset power bars
+                    const originalWidths = ['90%', '85%', '92%', '88%'];
+                    document.querySelectorAll('.power-fill').forEach((fill, index) => {
+                        fill.style.width = originalWidths[index];
+                        fill.style.background = 'linear-gradient(90deg, #ff6b6b, #f9ca24, #4ecdc4)';
+                    });
+                }, 5000);
+            }, 3000);
+        }
     </script>
 </body>
 </html>
